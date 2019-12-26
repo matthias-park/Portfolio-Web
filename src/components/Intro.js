@@ -1,19 +1,23 @@
 import React from 'react';
 import '../styles/intro.css';
 import { Container, Header } from 'semantic-ui-react';
-import svgBackground from '../styles/svgBackground';
 
 class Intro extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-           <div className='container'>
-               <Header as='h1'> Hello, I'm Matthias Park.</Header>
-               <Header as='h1'> I'm a front-end web developer</Header>
-               <Header as='h3'>
-                   View my work
-               </Header>
-           </div>
+            <div>
+                <div className="bg"></div>
+                <div className="bg bg2"></div>
+                <div className="bg bg3"></div>
+                <div class="content">
+                <h1>Sliding Diagonals Background Effect</h1>
+                </div>
+            </div>
         )
     }
 }
