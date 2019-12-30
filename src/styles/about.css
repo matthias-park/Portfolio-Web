@@ -1,0 +1,8 @@
+.about { 
+    height: 100vh; 
+}
+
+.titleHeader {
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
