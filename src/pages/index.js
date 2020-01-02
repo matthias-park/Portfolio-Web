@@ -31,8 +31,6 @@ class Index extends React.Component {
       
     render() {
 
-        console.log(this.state);
-
         const { windowWidth } = this.state;
 
         const menuCollapsed = windowWidth < 1100;
@@ -40,12 +38,10 @@ class Index extends React.Component {
         const styles = {
             menuCollapsed,
             headerFontSize: windowWidth > 500 ? 'huge' : 'small',
-            contentFontSize: windowWidth > 500 ? 'huge' : 'small'
+            contentFontSize: windowWidth > 500 ? 'large' : 'tiny'
         }
         return (
-            <div>
                 <Intro styles={styles}/>
-            </div>
         )
     }
 }

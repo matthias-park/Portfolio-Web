@@ -1,6 +1,6 @@
 import React, {createRef} from 'react';
 import '../styles/intro.css';
-import { Header, Button, Responsive, Container, Menu, Sticky, Divider, Icon } from 'semantic-ui-react';
+import { Header, Button, Grid, Container, Menu, Sticky, Divider, Icon } from 'semantic-ui-react';
 import About from '../components/about';
 import Portfolio from './portfolio';
 import Contact from './contact';
@@ -26,17 +26,16 @@ class Intro extends React.Component {
     render() {
         const { activeItem } = this.state;
         const {styles} = this.props;
-        console.log(this.props);
+        // console.log(this.props);
         return (
             
             <div>
                 <div ref={this.homeRef}>
                     <Container className='intro'>
-                        <Responsive>
                             <div className="bg"></div>
                             <div className="bg bg2"></div>
                             <div className="bg bg3"></div>
-                            <div class="content">
+                            <div className="content">
                                 <Header size={styles.headerFontSize}>Hi I'm Junsoo Park</Header>
                                 <Header size={styles.headerFontSize}>I'm front end developer</Header>
                                 <Button 
@@ -48,7 +47,6 @@ class Intro extends React.Component {
                                     Go my work
                                 </Button>
                             </div>
-                        </Responsive>
                     </Container>
                 </div>
 
@@ -67,6 +65,16 @@ class Intro extends React.Component {
                                 }}
                             >
                                 HOME
+                            </Menu.Item>
+                            <Menu.Item
+                                name='about'
+                                active={activeItem === 'about'}
+                                onClick={(name) => {
+                                    this.handleItemClick(name);
+                                    this.aboutRef.current.scrollIntoView({ behavior: 'smooth'});
+                                }}
+                            >
+                                ABOUT
                             </Menu.Item>
                             <Menu.Item
                                 name='portfolio'
@@ -93,30 +101,33 @@ class Intro extends React.Component {
 
                     <div ref={this.aboutRef}>
                         <Container attached='bottom'>
-                            <Responsive as={Container}>
-                                <About/>
-                            </Responsive>
+                                <About styles={styles}/>
                         </Container>
                     </div>
                     {this._renderDivider()}
 
                     <div ref={this.portfolioRef}>
                         <Container attached='bottom'>
-                            <Responsive as={Container}>
                                 <Portfolio/>
-                            </Responsive>
                         </Container>
                     </div>
                     {this._renderDivider()}
                     
                     <div ref={this.contactRef}>
                         <Container attached='bottom'>
-                            <Responsive as={Container}>
-                                <Contact/>
-                            </Responsive>
+                                <Contact styles={styles}/>
                         </Container>
                     </div>
-
+                </div>
+                {this._renderDivider(true)}
+                <div>
+                    <Container className='footer'>
+                                <nav>
+                                    <a href='https://github.com/matthias-park' target="_blank"><li>github</li></a>
+                                    <a href='https://www.linkedin.com/in/junsoo-park-b19310173/' target="_blank"><li>linked-in</li></a>
+                                    <a href='https://www.rocketpunch.com/@matthiaspark0514' target="_blank"><li>rocket-punch</li></a>
+                                </nav>
+                    </Container>
                 </div>
 
             </div>
@@ -125,14 +136,31 @@ class Intro extends React.Component {
 
     scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop);
 
-    _renderDivider = () => {
-        return (
-            <Divider horizontal>
-                <Header size='medium'>
-                    <Icon name='linkify'/>
-                </Header>
-            </Divider>
-        )
+    _renderDivider = (footer) => {
+        const {styles} = this.props
+        if ( footer ) {
+            return (
+                <Divider horizontal>
+                    <Header 
+                        size={styles.contentFontSize}
+                        onClick={(name) => {
+                            this.handleItemClick(name);
+                            this.homeRef.current.scrollIntoView({ behavior: 'smooth'});
+                        }}
+                    >
+                        <Icon className='angleUp' name='angle double up' bordered/>
+                    </Header>
+                </Divider>
+            )
+        } else {
+            return (
+                <Divider horizontal>
+                    <Header size={styles.contentFontSize}>
+                        <Icon name='linkify'/>
+                    </Header>
+                </Divider>
+            )
+        }
     }
 }
 

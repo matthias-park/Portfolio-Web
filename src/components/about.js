@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Header, Segment, Responsive, Container, Grid, Divider } from 'semantic-ui-react';
+import { Icon, Header, Image, Responsive, Container, Grid, Card, Progress } from 'semantic-ui-react';
 import '../styles/about.css';
 
 class About extends React.Component{
@@ -9,14 +9,15 @@ class About extends React.Component{
     }
 
     render() {
+        const {styles} = this.props;
         return (
             <Container className='about'>
                 <Responsive as={Container}>
-                    <Header className='titleHeader' textAlign='center' size='huge'>ABOUT</Header>
-                    <Grid columns='four'>
-                        <Grid.Row>
+                    <Header className='titleHeader' textAlign='center' size={styles.headerFontSize}>ABOUT</Header>
+                    <Grid>
+                        <Grid.Row columns={4}>
                             <Grid.Column>
-                                <Header size='large' icon textAlign='center'>
+                                <Header size={styles.contentFontSize} icon textAlign='center'>
                                     <Icon name='clock outline' />
                                         Fast
                                     <Header.Subheader>
@@ -25,7 +26,7 @@ class About extends React.Component{
                                 </Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Header size='large' icon textAlign='center'>
+                                <Header size={styles.contentFontSize} icon textAlign='center'>
                                     <Icon name='line graph' />
                                         Comprehensive
                                     <Header.Subheader>
@@ -34,7 +35,7 @@ class About extends React.Component{
                                 </Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Header as='h2' icon textAlign='center'>
+                                <Header size={styles.contentFontSize} icon textAlign='center'>
                                     <Icon name='shield alternate' />
                                         Security
                                     <Header.Subheader>
@@ -43,14 +44,38 @@ class About extends React.Component{
                                 </Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Header as='h2' icon textAlign='center'>
-                                    <Icon name='handshake outline' />
+                                <Header size={styles.contentFontSize} icon textAlign='center'>
+                                    <Icon name='mouse pointer' />
                                         Dynamic
                                     <Header.Subheader>
-                                        Nowadays, applications are alive.
+                                        Nowadays, applications are alive.<br />
                                         I animate apps to dynamic
                                     </Header.Subheader>
                                 </Header>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={2}>
+                            <Grid.Column textAlign='center'>
+                                  <Container>
+                                  <Image src={require('../assets/images/01.jpg')} size={styles.contentFontSize} wrapped ui={false} bordered/>
+                                      <Header size={styles.headerFontSize}>
+                                        Who am I?
+                                        <Header.Subheader>
+                                            I'm the Front-End Developer in Seoul where the city is capitol of South Korea. <br/>
+                                            I've loved handling raw data to suitable information for user e.g. table, graph and etc... <br />
+                                            Let's make new experience.
+                                        </Header.Subheader>
+                                      </Header>
+                                  </Container>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Progress value='9' total='10' progress='percent' active color='olive'>HTML</Progress>
+                                <Progress value='6' total='10' progress='percent' active color='olive'>CSS</Progress>
+                                <Progress value='8' total='10' progress='percent' active color='olive'>JAVASCRIPT</Progress>
+                                <Progress value='7' total='10' progress='percent' active color='olive'>TYPESCRIPT</Progress>
+                                <Progress value='7' total='10' progress='percent' active color='olive'>REACT</Progress>
+                                <Progress value='8' total='10' progress='percent' active color='olive'>ANGULAR</Progress>
+                                <Progress value='4' total='10' progress='percent' active color='olive'>NODE.js</Progress>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
