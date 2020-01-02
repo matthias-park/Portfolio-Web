@@ -37,10 +37,10 @@ class Intro extends React.Component {
                             <div className="bg bg3"></div>
                             <div className="content">
                                 <Header size={styles.headerFontSize}>Hi I'm Junsoo Park</Header>
-                                <Header size={styles.headerFontSize}>I'm front end developer</Header>
+                                <Header size={styles.headerFontSize} style={{marginBottom: '10%'}}>I'm front end developer</Header>
                                 <Button 
                                     color='olive' 
-                                    className='buttonText' 
+                                    className='glow-on-hover' 
                                     onClick={() => {
                                     this.aboutRef.current.scrollIntoView({ behavior: 'smooth'});
                                 }}>
@@ -148,7 +148,13 @@ class Intro extends React.Component {
                             this.homeRef.current.scrollIntoView({ behavior: 'smooth'});
                         }}
                     >
-                        <Icon className='angleUp' name='angle double up' bordered/>
+                            <Button 
+                                color='olive' 
+                                className='glow-on-hover' 
+                            >
+                                <Icon name='angle double up' inverted size={styles.contentFontSize}/>
+                            </Button>
+
                     </Header>
                 </Divider>
             )
