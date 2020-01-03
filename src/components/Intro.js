@@ -108,7 +108,7 @@ class Intro extends React.Component {
 
                     <div ref={this.portfolioRef}>
                         <Container attached='bottom'>
-                                <Portfolio/>
+                                <Portfolio styles={styles}/>
                         </Container>
                     </div>
                     {this._renderDivider()}

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Container, Responsive } from 'semantic-ui-react';
+import { Container, Responsive, Tab, Header, Card, Image, CardHeader, Reveal } from 'semantic-ui-react';
 import '../styles/portfolio.css';
+import '../styles/imagehover.css';
+import portfolioBody from '../assets/portfolioJsonBody/portfolio';
+import siteManger from '../assets/images/siteManager.png';
 
 class Portfolio extends React.Component {
 
@@ -9,15 +12,59 @@ class Portfolio extends React.Component {
     }
 
     render() {
+        const {styles} = this.props;
         return (
             <Container className='portfolio'>
                 <Responsive as={Container}>
-                    portfolio
+                    <Header className='titleHeader' textAlign='center' size={styles.headerFontSize}>PORTFOLIO</Header>
+                    {this._renderTabs()}
                 </Responsive>
             </Container>
         );
     }
 
+    _renderTabs = () => {
+        let newBody = portfolioBody;
+        newBody.total = Object.values(portfolioBody).reduce((acc, it) => {
+           return  [...acc, ...it]
+        },[])
+        newBody['total'] = [...new Set(newBody.total)];
+
+        const panes = Object.entries(newBody).reverse().map(([key,value], i) => {
+            return {
+                menuItem: key,
+                render: () => {
+                    return (
+                        <Tab.Pane attached={false} key={i}>
+                            {this._renderContents(value)}
+                        </Tab.Pane>
+                    )
+                }
+            }
+        })
+
+        return<Tab menu={{ secondary: true, pointing: true }} panes={panes}/>
+    }
+
+    _renderContents = (contents) => {
+        const {styles} = this.props;
+        return contents.map((el, i) => {
+            const imgUrl = `../assets/images/${el.image}.png`;
+            return (
+                <figure className="imghvr-push-up" key={i}>
+                    <Image src={el.image} alt="sorry" />
+                    <figcaption>
+                        <Header size={styles.headerFontSize}>{el.title}</Header>
+                    </figcaption>
+                </figure>
+
+            )
+        })
+    }
+
+    _renderImg = (url) => {
+        return require(`${url}`)
+    }
 }
 
 export default Portfolio;
