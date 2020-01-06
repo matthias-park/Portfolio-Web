@@ -4,3 +4,12 @@ body{
 .portfolio {
     min-height: 100vh;
 }
+
+.subHeader {
+    text-transform: capitalize !important;
+}
+
+.ui.image {
+    width: auto;
+    max-height: 25% !important;
+}

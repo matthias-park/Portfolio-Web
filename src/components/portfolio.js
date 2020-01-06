@@ -1,9 +1,8 @@
 import React from 'react';
-import { Container, Responsive, Tab, Header, Card, Image, CardHeader, Reveal } from 'semantic-ui-react';
+import { Container, Responsive, Tab, Header, Image} from 'semantic-ui-react';
 import '../styles/portfolio.css';
 import '../styles/imagehover.css';
 import portfolioBody from '../assets/portfolioJsonBody/portfolio';
-import siteManger from '../assets/images/siteManager.png';
 
 class Portfolio extends React.Component {
 
@@ -35,7 +34,7 @@ class Portfolio extends React.Component {
                 menuItem: key,
                 render: () => {
                     return (
-                        <Tab.Pane attached={false} key={i}>
+                        <Tab.Pane attached={false} key={i} textAlign='center'>
                             {this._renderContents(value)}
                         </Tab.Pane>
                     )
@@ -52,9 +51,10 @@ class Portfolio extends React.Component {
             const imgUrl = `../assets/images/${el.image}.png`;
             return (
                 <figure className="imghvr-push-up" key={i}>
-                    <Image src={el.image} alt="sorry" />
+                    <Image src={el.image} alt="sorry" size={styles.contentFontSize} />
                     <figcaption>
                         <Header size={styles.headerFontSize}>{el.title}</Header>
+                        <Header className='subHeader' size={styles.contentFontSize} color='olive'>{el.language} / {el.framework}</Header>
                     </figcaption>
                 </figure>
 
