@@ -1,15 +1,22 @@
-body{
-    height: 100%;
+body {
+  height: 100%;
 }
 .portfolio {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .subHeader {
-    text-transform: capitalize !important;
+  text-transform: capitalize !important;
+  margin-bottom: 4rem !important;
 }
 
-.ui.image {
-    width: auto;
-    max-height: 25% !important;
+.description {
+  width: 22vw !important;
+}
+.modal-header {
+  margin-bottom: 24rem !important;
+}
+
+.link-button {
+  margin-left: 1rem !important;
 }

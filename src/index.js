@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux';
 import configureStore from './config/store';
+import './i18n';
 
 const store = configureStore();
 

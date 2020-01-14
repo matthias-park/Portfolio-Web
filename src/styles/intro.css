@@ -1,64 +1,63 @@
 body {
-  margin:0;
+  margin: 0;
 }
 
-.intro { 
-  height: 100vh; 
+.intro {
+  height: 100vh;
 }
 
 .footer {
   height: 20vh;
 }
 
-
 .bg {
-  animation:slide 3s ease-in-out infinite alternate;
+  animation: slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
   position: absolute;
-  right:-50%;
-  top:0;
-  z-index:-1;
+  right: -50%;
+  top: 0;
+  z-index: -1;
 }
 
 .bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
 }
 
 .bg3 {
-  animation-duration:5s;
+  animation-duration: 5s;
 }
 
 .content {
-  background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position: absolute;;
-  text-align:center;
-  top:50%;
-  transform:translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10vmin;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
-  font-family:monospace;
+  font-family: monospace;
 }
 
 @keyframes slide {
   0% {
-    transform:translateX(-25%);
+    transform: translateX(-25%);
   }
   100% {
-    transform:translateX(25%);
+    transform: translateX(25%);
   }
 }
 
-nav{
+nav {
   padding: 0;
   list-style-type: none;
   margin-left: 38%;
@@ -76,12 +75,11 @@ nav li {
   position: relative;
   transition: 0.3s;
   margin: 3rem;
-
 }
 
 nav li::before,
 nav li::after {
-  content: '';
+  content: "";
   position: absolute;
   width: inherit;
   height: inherit;
@@ -97,7 +95,7 @@ nav li::before {
 }
 
 nav li::after {
-  background-color: #6c3 ;
+  background-color: #6c3;
   transform: translate(1.5rem, 1.5rem);
   z-index: -2;
 }
@@ -108,7 +106,7 @@ nav li:hover {
 }
 
 nav li:hover::before {
-  background-color: #6c3 ;
+  background-color: #6c3;
 }
 
 nav li:hover::after {
@@ -130,11 +128,22 @@ nav li:hover::after {
 }
 
 .glow-on-hover:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -142,12 +151,12 @@ nav li:hover::after {
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 .glow-on-hover:active {
-  color: #000
+  color: #000;
 }
 
 .glow-on-hover:active:after {
@@ -160,7 +169,7 @@ nav li:hover::after {
 
 .glow-on-hover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -170,8 +179,18 @@ nav li:hover::after {
   border-radius: 10px;
 }
 
+.flag {
+  cursor: pointer;
+}
+
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
