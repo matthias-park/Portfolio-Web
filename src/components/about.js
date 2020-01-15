@@ -33,39 +33,43 @@ class About extends React.Component {
             <Grid.Row columns={4}>
               <Grid.Column>
                 <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="clock outline" />
-                  Fast
-                  <Header.Subheader>
-                    Load fast without lag, provides the best UX
+                  <Icon name="clock outline" size={styles.contentFontSize} />
+                  {i18n.t("Fast")}
+                  <Header.Subheader size={styles.contentFontSize}>
+                    {i18n.t("Load fast without lag, provides the best UX")}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header size={styles.contentFontSize} icon textAlign="center">
                   <Icon name="line graph" />
-                  Comprehensive
-                  <Header.Subheader>
-                    I loved to re-structure data for comprehensive dash-board
+                  {i18n.t("Comprehensive")}
+                  <Header.Subheader size={styles.contentFontSize}>
+                    {i18n.t(
+                      "I loved to re-structure data for comprehensive dash-board"
+                    )}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header size={styles.contentFontSize} icon textAlign="center">
                   <Icon name="shield alternate" />
-                  Security
-                  <Header.Subheader>
-                    Keep secret between clients are the essential part of modern
-                    websites
+                  {i18n.t("Security")}
+                  <Header.Subheader size={styles.contentFontSize}>
+                    {i18n.t(
+                      "Keep secret between clients are the essential part of modern websites"
+                    )}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header size={styles.contentFontSize} icon textAlign="center">
                   <Icon name="mouse pointer" />
-                  Dynamic
-                  <Header.Subheader>
-                    Nowadays, applications are alive.
-                    <br />I animate apps to dynamic
+                  {i18n.t("Dynamic")}
+                  <Header.Subheader size={styles.contentFontSize}>
+                    {i18n.t("Nowadays, applications are alive.")}
+                    <br />
+                    {i18n.t("I animate apps to dynamic")}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -73,21 +77,29 @@ class About extends React.Component {
             <Grid.Row columns={2}>
               <Grid.Column textAlign="center">
                 <Container>
-                  <Image
-                    src={require("../assets/images/01.jpg")}
-                    size={styles.contentFontSize}
-                    wrapped
-                    ui={false}
-                    bordered
-                  />
+                  {styles.contentFontSize === "medium" ? (
+                    <Image
+                      src={require("../assets/images/01.jpg")}
+                      wrapped
+                      ui={false}
+                      bordered
+                    />
+                  ) : (
+                    ""
+                  )}
+
                   <Header size={styles.headerFontSize}>
-                    Who am I?
-                    <Header.Subheader>
-                      I'm the Front-End Developer in Seoul where the city is
-                      capitol of South Korea. <br />
-                      I've loved handling raw data to suitable information for
-                      user e.g. table, graph and etc... <br />
-                      Let's make new experience.
+                    {i18n.t("Who am I?")}
+                    <Header.Subheader size={styles.contentFontSize}>
+                      {i18n.t(
+                        `I'm the Front-End Developer in Seoul where the city is capitol of South Korea.`
+                      )}{" "}
+                      <br />
+                      {i18n.t(
+                        `I've loved handling raw data to suitable information for user e.g. table, graph and etc...`
+                      )}{" "}
+                      <br />
+                      {i18n.t(`Let's make new experience.`)}
                     </Header.Subheader>
                   </Header>
                 </Container>
@@ -99,6 +111,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   HTML
                 </Progress>
@@ -108,6 +121,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   CSS
                 </Progress>
@@ -117,6 +131,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   JAVASCRIPT
                 </Progress>
@@ -126,6 +141,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   TYPESCRIPT
                 </Progress>
@@ -135,6 +151,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   REACT
                 </Progress>
@@ -144,6 +161,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   ANGULAR
                 </Progress>
@@ -153,6 +171,7 @@ class About extends React.Component {
                   progress="percent"
                   active
                   color="olive"
+                  size={styles.contentFontSize}
                 >
                   NODE.js
                 </Progress>

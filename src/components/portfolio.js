@@ -13,6 +13,7 @@ import {
 import "../styles/portfolio.css";
 import "../styles/imagehover.css";
 import portfolioBody from "../assets/portfolioJsonBody/portfolio";
+import { withTranslation } from "react-i18next";
 
 class Portfolio extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    const { styles } = this.props;
+    const { styles, i18n } = this.props;
     return (
       <Container className="portfolio">
         <Responsive as={Container}>
@@ -29,7 +30,7 @@ class Portfolio extends React.Component {
             textAlign="center"
             size={styles.headerFontSize}
           >
-            PORTFOLIO
+            {i18n.t("PORTFOLIO")}
           </Header>
           {this._renderTabs()}
         </Responsive>
@@ -51,7 +52,7 @@ class Portfolio extends React.Component {
           menuItem: key,
           render: () => {
             return (
-              <Tab.Pane attached={false} key={i} textAlign="center">
+              <Tab.Pane attached={true} key={i} textAlign="center">
                 {this._renderContents(value)}
               </Tab.Pane>
             );
@@ -65,19 +66,31 @@ class Portfolio extends React.Component {
   _renderContents = contents => {
     const { styles } = this.props;
     return contents.map((el, i) => {
-      const imgUrl = `../assets/images/${el.image}.png`;
       return (
         <figure className="imghvr-blur" key={i}>
-          <Image src={el.image} alt="sorry" size={styles.contentFontSize} />
+          <Image
+            src={el.image}
+            alt="sorry"
+            size={styles.contentFontSize === "medium" ? "large" : "small"}
+          />
           <figcaption>
-            <Header size={styles.headerFontSize}>{el.title}</Header>
-            <Header
-              className="subHeader"
-              size={styles.contentFontSize}
-              color="teal"
-            >
-              {el.language} / {el.framework}
-            </Header>
+            {styles.contentFontSize === "medium" ? (
+              <Header size={styles.headerFontSize}>{el.title}</Header>
+            ) : (
+              ""
+            )}
+            {styles.contentFontSize === "medium" ? (
+              <Header
+                className="subHeader"
+                size={styles.contentFontSize}
+                color="teal"
+              >
+                {el.language} / {el.framework}
+              </Header>
+            ) : (
+              ""
+            )}
+
             {this._renderModal(el)}
           </figcaption>
         </figure>
@@ -86,9 +99,16 @@ class Portfolio extends React.Component {
   };
 
   _renderModal = el => {
-    const { styles } = this.props;
+    const { styles, i18n } = this.props;
     return (
-      <Modal trigger={<Button color="teal">Show More!</Button>} closeIcon>
+      <Modal
+        trigger={
+          <Button color="teal" size={styles.contentFontSize}>
+            Show More!
+          </Button>
+        }
+        closeIcon
+      >
         <Modal.Header className="modal-header">
           {el.language} / {el.framework}
         </Modal.Header>
@@ -98,14 +118,18 @@ class Portfolio extends React.Component {
             <Header size={styles.headerFontSize}>
               {el.title}
               {"  "}
-              <a href={el.url} target="_blank" className="link-button">
-                <Button icon color="teal">
-                  <Icon name="world" />
-                </Button>
-              </a>
+              {el.url !== "closed" ? (
+                <a href={el.url} target="_blank" className="link-button">
+                  <Button icon color="teal">
+                    <Icon name="world" />
+                  </Button>
+                </a>
+              ) : (
+                ""
+              )}
             </Header>
             <Divider />
-            {el.description}
+            {i18n.language === "en" ? el.description : el.descriptionKor}
           </Modal.Description>
         </Modal.Content>
       </Modal>
@@ -113,4 +137,4 @@ class Portfolio extends React.Component {
   };
 }
 
-export default Portfolio;
+export default withTranslation()(Portfolio);

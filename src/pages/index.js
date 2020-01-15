@@ -27,6 +27,7 @@ class Index extends React.Component {
     let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
 
     this.setState({ windowWidth, windowHeight });
+    console.log(this.state);
   }
 
   render() {
@@ -37,7 +38,7 @@ class Index extends React.Component {
     const styles = {
       menuCollapsed,
       headerFontSize: windowWidth > 500 ? "huge" : "small",
-      contentFontSize: windowWidth > 500 ? "large" : "tiny"
+      contentFontSize: windowWidth > 500 ? "medium" : "tiny"
     };
     return <Intro styles={styles} />;
   }
