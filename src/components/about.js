@@ -33,7 +33,7 @@ class About extends React.Component {
             <Grid.Row columns={4}>
               <Grid.Column>
                 <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="clock outline" size={styles.contentFontSize} />
+                  <Icon name="clock outline" />
                   {i18n.t("Fast")}
                   <Header.Subheader size={styles.contentFontSize}>
                     {i18n.t("Load fast without lag, provides the best UX")}

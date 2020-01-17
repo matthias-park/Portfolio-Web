@@ -10,7 +10,8 @@ import {
   Divider,
   Icon,
   Flag,
-  Label
+  Label,
+  Dropdown
 } from "semantic-ui-react";
 import About from "../components/about";
 import Portfolio from "./portfolio";
@@ -38,7 +39,6 @@ class Intro extends React.Component {
   }
 
   render() {
-    const { activeItem } = this.state;
     const { styles, i18n } = this.props;
     return (
       <div>
@@ -72,6 +72,7 @@ class Intro extends React.Component {
               <Button
                 color="olive"
                 className="glow-on-hover"
+                size={styles.contentFontSize}
                 onClick={() => {
                   this.aboutRef.current.scrollIntoView({ behavior: "smooth" });
                 }}
@@ -83,55 +84,7 @@ class Intro extends React.Component {
         </div>
 
         <div ref={this.menuRef}>
-          <Sticky context={this.menuRef}>
-            <Menu attached="top" borderless>
-              <Menu.Item
-                name="home"
-                active={activeItem === "home"}
-                onClick={name => {
-                  this.handleItemClick(name);
-                  this.homeRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {i18n.t("HOME")}
-              </Menu.Item>
-              <Menu.Item
-                name="about"
-                active={activeItem === "about"}
-                onClick={name => {
-                  this.handleItemClick(name);
-                  this.aboutRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {i18n.t("ABOUT")}
-              </Menu.Item>
-              <Menu.Item
-                name="portfolio"
-                active={activeItem === "portfolio"}
-                onClick={name => {
-                  this.handleItemClick(name);
-                  this.portfolioRef.current.scrollIntoView({
-                    behavior: "smooth"
-                  });
-                }}
-              >
-                {i18n.t("PORTFOLIO")}
-              </Menu.Item>
-              <Menu.Item
-                name="contact"
-                active={activeItem === "contact"}
-                onClick={name => {
-                  this.handleItemClick(name);
-                  this.contactRef.current.scrollIntoView({
-                    behavior: "smooth"
-                  });
-                }}
-              >
-                {i18n.t("CONTACT")}
-              </Menu.Item>
-            </Menu>
-          </Sticky>
-
+          <Sticky context={this.menuRef}>{this._renderMenu()}</Sticky>
           <div ref={this.aboutRef}>
             <Container attached="bottom">
               <About styles={styles} />
@@ -191,7 +144,11 @@ class Intro extends React.Component {
               this.homeRef.current.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <Button color="olive" className="glow-on-hover">
+            <Button
+              color="olive"
+              className="glow-on-hover"
+              size={styles.contentFontSize}
+            >
               <Icon
                 name="angle double up"
                 inverted
@@ -208,6 +165,115 @@ class Intro extends React.Component {
             <Icon name="linkify" />
           </Header>
         </Divider>
+      );
+    }
+  };
+
+  _renderMenu = () => {
+    const { activeItem } = this.state;
+    const { styles } = this.props;
+
+    if (styles.contentFontSize === "medium") {
+      return (
+        <Menu attached="top" borderless>
+          <Menu.Item
+            name="home"
+            active={activeItem === "home"}
+            onClick={name => {
+              this.handleItemClick(name);
+              this.homeRef.current.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            {i18n.t("HOME")}
+          </Menu.Item>
+          <Menu.Item
+            name="about"
+            active={activeItem === "about"}
+            onClick={name => {
+              this.handleItemClick(name);
+              this.aboutRef.current.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            {i18n.t("ABOUT")}
+          </Menu.Item>
+          <Menu.Item
+            name="portfolio"
+            active={activeItem === "portfolio"}
+            onClick={name => {
+              this.handleItemClick(name);
+              this.portfolioRef.current.scrollIntoView({
+                behavior: "smooth"
+              });
+            }}
+          >
+            {i18n.t("PORTFOLIO")}
+          </Menu.Item>
+          <Menu.Item
+            name="contact"
+            active={activeItem === "contact"}
+            onClick={name => {
+              this.handleItemClick(name);
+              this.contactRef.current.scrollIntoView({
+                behavior: "smooth"
+              });
+            }}
+          >
+            {i18n.t("CONTACT")}
+          </Menu.Item>
+        </Menu>
+      );
+    } else {
+      return (
+        <Menu vertical>
+          <Dropdown item text="Menu">
+            <Dropdown.Menu>
+              <Dropdown.Item
+                name="home"
+                active={activeItem === "home"}
+                onClick={name => {
+                  this.handleItemClick(name);
+                  this.homeRef.current.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {i18n.t("HOME")}
+              </Dropdown.Item>
+              <Dropdown.Item
+                name="about"
+                active={activeItem === "about"}
+                onClick={name => {
+                  this.handleItemClick(name);
+                  this.aboutRef.current.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {i18n.t("ABOUT")}
+              </Dropdown.Item>
+              <Dropdown.Item
+                name="portfolio"
+                active={activeItem === "portfolio"}
+                onClick={name => {
+                  this.handleItemClick(name);
+                  this.portfolioRef.current.scrollIntoView({
+                    behavior: "smooth"
+                  });
+                }}
+              >
+                {i18n.t("PORTFOLIO")}
+              </Dropdown.Item>
+              <Dropdown.Item
+                name="contact"
+                active={activeItem === "contact"}
+                onClick={name => {
+                  this.handleItemClick(name);
+                  this.contactRef.current.scrollIntoView({
+                    behavior: "smooth"
+                  });
+                }}
+              >
+                {i18n.t("CONTACT")}
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu>
       );
     }
   };
