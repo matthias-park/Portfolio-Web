@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Copy MY PORTFOLIO WEB"
-ssh master 'rm -rf ~/my-portfolio-web/build'
-rsync -a -P /home/matthias/my-portfolio-web/build  Portfolio:~/my-portfolio-web
+ssh master 'rm -rf /home/ubuntu/my-portfolio-web/build'
+rsync -a -P /home/matthias/my-portfolio-web/build  Portfolio:/home/ubuntu/my-portfolio-web
 echo "MY PORTFOLIO WEB - copied"
 

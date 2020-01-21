@@ -45,8 +45,8 @@ class Index extends React.Component {
 
     const styles = {
       menuCollapsed,
-      headerFontSize: windowWidth > 850 ? "huge" : "small",
-      contentFontSize: windowWidth > 850 ? "medium" : "tiny"
+      headerFontSize: windowWidth > 1440 ? "huge" : "small",
+      contentFontSize: windowWidth > 1440 ? "medium" : "tiny"
     };
     return <Intro styles={styles} />;
   }

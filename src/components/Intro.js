@@ -47,6 +47,7 @@ class Intro extends React.Component {
             <div className="bg"></div>
             <div className="bg bg2"></div>
             <div className="bg bg3"></div>
+
             <div className="content">
               <Label
                 basic
