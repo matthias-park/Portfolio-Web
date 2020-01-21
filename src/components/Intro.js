@@ -152,7 +152,11 @@ class Intro extends React.Component {
               <Icon
                 name="angle double up"
                 inverted
-                size={styles.contentFontSize}
+                size={
+                  styles.contentFontSize === "medium"
+                    ? "small"
+                    : styles.contentFontSize
+                }
               />
             </Button>
           </Header>

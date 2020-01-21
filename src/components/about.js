@@ -30,50 +30,7 @@ class About extends React.Component {
             {i18n.t("ABOUT")}
           </Header>
           <Grid>
-            <Grid.Row columns={4}>
-              <Grid.Column>
-                <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="clock outline" />
-                  {i18n.t("Fast")}
-                  <Header.Subheader size={styles.contentFontSize}>
-                    {i18n.t("Load fast without lag, provides the best UX")}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="line graph" />
-                  {i18n.t("Comprehensive")}
-                  <Header.Subheader size={styles.contentFontSize}>
-                    {i18n.t(
-                      "I loved to re-structure data for comprehensive dash-board"
-                    )}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="shield alternate" />
-                  {i18n.t("Security")}
-                  <Header.Subheader size={styles.contentFontSize}>
-                    {i18n.t(
-                      "Keep secret between clients are the essential part of modern websites"
-                    )}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header size={styles.contentFontSize} icon textAlign="center">
-                  <Icon name="mouse pointer" />
-                  {i18n.t("Dynamic")}
-                  <Header.Subheader size={styles.contentFontSize}>
-                    {i18n.t("Nowadays, applications are alive.")}
-                    <br />
-                    {i18n.t("I animate apps to dynamic")}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
+            {styles.contentFontSize === "medium" ? this._renderStrength() : ""}
             <Grid.Row columns={2}>
               <Grid.Column textAlign="center">
                 <Container>
@@ -182,6 +139,56 @@ class About extends React.Component {
       </Container>
     );
   }
+
+  _renderStrength = () => {
+    const { styles, i18n } = this.props;
+    return (
+      <Grid.Row columns={4}>
+        <Grid.Column>
+          <Header size={styles.contentFontSize} icon textAlign="center">
+            <Icon name="clock outline" />
+            {i18n.t("Fast")}
+            <Header.Subheader size={styles.contentFontSize}>
+              {i18n.t("Load fast without lag, provides the best UX")}
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column>
+          <Header size={styles.contentFontSize} icon textAlign="center">
+            <Icon name="line graph" />
+            {i18n.t("Comprehensive")}
+            <Header.Subheader size={styles.contentFontSize}>
+              {i18n.t(
+                "I loved to re-structure data for comprehensive dash-board"
+              )}
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column>
+          <Header size={styles.contentFontSize} icon textAlign="center">
+            <Icon name="shield alternate" />
+            {i18n.t("Security")}
+            <Header.Subheader size={styles.contentFontSize}>
+              {i18n.t(
+                "Keep secret between clients are the essential part of modern websites"
+              )}
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column>
+          <Header size={styles.contentFontSize} icon textAlign="center">
+            <Icon name="mouse pointer" />
+            {i18n.t("Dynamic")}
+            <Header.Subheader size={styles.contentFontSize}>
+              {i18n.t("Nowadays, applications are alive.")}
+              <br />
+              {i18n.t("I animate apps to dynamic")}
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+      </Grid.Row>
+    );
+  };
 }
 
 export default withTranslation()(About);

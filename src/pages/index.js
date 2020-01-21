@@ -23,8 +23,16 @@ class Index extends React.Component {
   }
 
   updateDimensions() {
-    let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-    let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+    // let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    // let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+    let windowWidth =
+      typeof window !== "undefined"
+        ? window.screen.width * window.devicePixelRatio
+        : 0;
+    let windowHeight =
+      typeof window !== "undefined"
+        ? window.screen.width * window.devicePixelRatio
+        : 0;
 
     this.setState({ windowWidth, windowHeight });
     console.log(this.state);
@@ -37,8 +45,8 @@ class Index extends React.Component {
 
     const styles = {
       menuCollapsed,
-      headerFontSize: windowWidth > 500 ? "huge" : "small",
-      contentFontSize: windowWidth > 500 ? "medium" : "tiny"
+      headerFontSize: windowWidth > 850 ? "huge" : "small",
+      contentFontSize: windowWidth > 850 ? "medium" : "tiny"
     };
     return <Intro styles={styles} />;
   }
