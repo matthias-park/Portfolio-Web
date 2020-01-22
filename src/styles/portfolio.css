@@ -20,3 +20,21 @@ body {
 .link-button {
   margin-left: 1rem !important;
 }
+
+.wrapper {
+  position: relative !important;
+}
+
+.desktop-carousel .carousel {
+  position: relative !important;
+  top: 18em !important;
+}
+
+.mobile-carousel .carousel {
+  position: relative !important;
+  top: 6em !important;
+}
+
+.mobile-carousel .button {
+  padding: 0 !important;
+}

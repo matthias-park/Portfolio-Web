@@ -14,6 +14,7 @@ import "../styles/portfolio.css";
 import "../styles/imagehover.css";
 import portfolioBody from "../assets/portfolioJsonBody/portfolio";
 import { withTranslation } from "react-i18next";
+import Carousel from "semantic-ui-carousel-react";
 
 class Portfolio extends React.Component {
   constructor(props) {
@@ -65,37 +66,60 @@ class Portfolio extends React.Component {
 
   _renderContents = contents => {
     const { styles } = this.props;
-    return contents.map((el, i) => {
-      return (
-        <figure className="imghvr-blur" key={i}>
-          <Image
-            src={el.image}
-            alt="sorry"
-            size={styles.contentFontSize === "medium" ? "large" : "small"}
-          />
-          <figcaption>
-            {styles.contentFontSize === "medium" ? (
-              <Header size={styles.headerFontSize}>{el.title}</Header>
-            ) : (
-              ""
-            )}
-            {styles.contentFontSize === "medium" ? (
-              <Header
-                className="subHeader"
-                size={styles.contentFontSize}
-                color="teal"
-              >
-                {el.language} / {el.framework}
-              </Header>
-            ) : (
-              ""
-            )}
+    let items = [];
+    contents.forEach(it => {
+      const temp = {
+        render: () => {
+          return (
+            <figure className="imghvr-blur" key={it.title}>
+              <Image
+                src={it.image}
+                alt="sorry"
+                size={styles.contentFontSize === "medium" ? "huge" : "medium"}
+              />
+              <figcaption>
+                {styles.contentFontSize === "medium" ? (
+                  <Header size={styles.headerFontSize}>{it.title}</Header>
+                ) : (
+                  ""
+                )}
+                {styles.contentFontSize === "medium" ? (
+                  <Header
+                    className="subHeader"
+                    size={styles.contentFontSize}
+                    color="teal"
+                  >
+                    {it.language} / {it.framework}
+                  </Header>
+                ) : (
+                  ""
+                )}
 
-            {this._renderModal(el)}
-          </figcaption>
-        </figure>
-      );
-    });
+                {this._renderModal(it)}
+              </figcaption>
+            </figure>
+          );
+        }
+      };
+      items.push(temp);
+    }, []);
+
+    return (
+      <div
+        className={
+          styles.contentFontSize === "medium"
+            ? "desktop-carousel"
+            : "mobile-carousel"
+        }
+      >
+        <Carousel
+          elements={items}
+          animation="slide left"
+          showNextPrev={true}
+          showIndicators={true}
+        />
+      </div>
+    );
   };
 
   _renderModal = el => {

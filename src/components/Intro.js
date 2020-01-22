@@ -112,7 +112,10 @@ class Intro extends React.Component {
             <a href="https://www.github.com/matthias-park" target="_blank">
               <Button circular color="grey" icon="github" />
             </a>
-            <a href="https://github.com/matthias-park" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/junsoo-park-b19310173/"
+              target="_blank"
+            >
               <Button circular color="linkedin" icon="linkedin" />
             </a>
             <a
