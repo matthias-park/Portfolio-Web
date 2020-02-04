@@ -7,14 +7,14 @@ body {
 
 .subHeader {
   text-transform: capitalize !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 1em !important;
 }
 
 .description {
-  width: 22vw !important;
+  width: 30vw !important;
 }
 .modal-header {
-  margin-bottom: 24rem !important;
+  margin-bottom: 13em !important;
 }
 
 .link-button {
@@ -35,6 +35,6 @@ body {
   top: 6em !important;
 }
 
-.mobile-carousel .button {
-  padding: 0 !important;
+.modalHeader {
+  margin-top: 5em !important;
 }

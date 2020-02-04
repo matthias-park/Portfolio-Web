@@ -79,7 +79,9 @@ class Portfolio extends React.Component {
               />
               <figcaption>
                 {styles.contentFontSize === "medium" ? (
-                  <Header size={styles.headerFontSize}>{it.title}</Header>
+                  <Header size={styles.headerFontSize} className="modalHeader">
+                    {it.title}
+                  </Header>
                 ) : (
                   ""
                 )}
@@ -131,11 +133,16 @@ class Portfolio extends React.Component {
             Show More!
           </Button>
         }
-        closeIcon
+        closeIcon={styles.contentFontSize === "medium" ? true : false}
       >
-        <Modal.Header className="modal-header">
-          {el.language} / {el.framework}
-        </Modal.Header>
+        {styles.contentFontSize === "medium" ? (
+          <Modal.Header className="modal-header">
+            {el.language} / {el.framework}
+          </Modal.Header>
+        ) : (
+          ""
+        )}
+
         <Modal.Content image>
           <Image wrapped size={styles.contentFontSize} src={el.image} />
           <Modal.Description>
