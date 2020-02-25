@@ -71,7 +71,11 @@ class Portfolio extends React.Component {
       const temp = {
         render: () => {
           return (
-            <figure className="imghvr-blur" key={it.title}>
+            <figure
+              className="imghvr-blur"
+              key={it.title}
+              style={{ marginTop: "2em" }}
+            >
               <Image
                 src={it.image}
                 alt="sorry"
@@ -144,7 +148,11 @@ class Portfolio extends React.Component {
         )}
 
         <Modal.Content image>
-          <Image wrapped size={styles.contentFontSize} src={el.image} />
+          <Image
+            wrapped
+            size={styles.contentFontSize === "medium" ? "medium" : "big"}
+            src={el.image}
+          />
           <Modal.Description>
             <Header size={styles.headerFontSize}>
               {el.title}
